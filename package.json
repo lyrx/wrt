@@ -1,0 +1,12 @@
+{
+  "name": "WRT",
+  "version": "1.0.0",
+  "description": "A Token To Change The World",
+  "main": "index.js",
+  "repository": "https://github.com/lyrx/wrt.git",
+  "author": "alex <enna@mailbox.org>",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.9.0"
+  }
+}

@@ -14,3 +14,4 @@ docs/
 .env
 .idea
 pk.sh
+node_modules
