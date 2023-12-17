@@ -41,19 +41,21 @@ contract Ownable2Step {
      * @param proposedOwner The address proposed to become the new owner.
      */
     function proposeOwner(address proposedOwner) public onlyOwner {
-        require(proposedOwner != address(0), "Ownable2Step: proposed owner is the zero address");
-        _proposedOwner = proposedOwner;
-        emit OwnershipProposed(_owner, proposedOwner);
+        if (proposedOwner != address(0)) {//, "Ownable2Step: proposed owner is the zero address");
+            _proposedOwner = proposedOwner;
+            emit OwnershipProposed(_owner, proposedOwner);
+        }
     }
 
     /**
      * @dev Confirms the ownership transfer to the proposed owner. Can only be called by the proposed owner.
      */
     function confirmOwnership() public {
-        require(msg.sender == _proposedOwner, "Ownable2Step: only proposed owner can confirm ownership");
-        emit OwnershipTransferred(_owner, _proposedOwner);
-        _owner = _proposedOwner;
-        _proposedOwner = address(0);
+        if (msg.sender == _proposedOwner) { //, "Ownable2Step: only proposed owner can confirm ownership");
+            emit OwnershipTransferred(_owner, _proposedOwner);
+            _owner = _proposedOwner;
+            _proposedOwner = address(0);
+        }
     }
 
     /**

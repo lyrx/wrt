@@ -27,9 +27,10 @@ contract Ownable2StepTest is DSTest, Test {
         assertEq(ownable.owner(), proposedOwner);
     }
 
-    function testFailConfirmOwnershipByNonProposed() public {
+    function testNotConfirmOwnershipByNonProposed() public {
         ownable.proposeOwner(proposedOwner);
         ownable.confirmOwnership(); // Should fail since it's not called by the proposed owner
+        assertEq(ownable.owner(), deployer);
     }
 
     function testFailProposeOwnerByNonOwner() public {
