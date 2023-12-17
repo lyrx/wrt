@@ -29,4 +29,9 @@ contract WrtTest is DSTest {
         // Check if the balance is reduced accordingly
         assertEq(wrt.balanceOf(deployer), initialBalance - burnAmount);
     }
+
+    function testOwnership() public {
+        // Check if the deployer is the owner
+        assertEq(wrt.owner(), deployer);
+    }
 }
