@@ -9,10 +9,12 @@ contract WrtTest is DSTest, Test  {
     Wrt wrt;
     address deployer;
     address nonOwner;
+    address proposedOwner;
 
     function setUp() public {
         deployer = address(this);
         nonOwner = address(0x2);
+        proposedOwner = address(0x3);
         wrt = new Wrt("WRT Token", "WRT", 1000);
     }
 
@@ -88,6 +90,30 @@ contract WrtTest is DSTest, Test  {
         wrt.pause();
         vm.prank(nonOwner);
         wrt.unpause();
+    }
+
+    function testFailProposeOwnerByNonOwner() public {
+        vm.prank(nonOwner);
+        wrt.proposeOwner(proposedOwner);
+    }
+
+    function testFailMintByNonOwner() public {
+        uint256 mintAmount = 50;
+        vm.prank(nonOwner);
+        wrt.mint(deployer, mintAmount);
+    }
+
+    function testFailPauseUnpauseByNonOwner() public {
+        vm.prank(nonOwner);
+        wrt.pause();
+        vm.prank(nonOwner);
+        wrt.unpause();
+    }
+
+    function testRenounceOwnership() public {
+
+        wrt.renounceOwnership();
+
     }
 
 

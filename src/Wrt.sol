@@ -5,13 +5,13 @@ pragma solidity 0.8.21;
 import "@openzeppelin-contracts@5.0.1/token/ERC20/ERC20.sol";
 import "@openzeppelin-contracts@5.0.1/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin-contracts@5.0.1/token/ERC20/extensions/ERC20Pausable.sol";
-import "@openzeppelin-contracts@5.0.1/access/Ownable.sol";
+import "./Ownable2Step.sol"; // Custom Ownable2Step contract
 
 /**
  * @title Wrt Token Contract
  * @dev Extends ERC20 Token Standard basic implementation with burnable and pausable capabilities.
  */
-contract Wrt is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
+contract Wrt is ERC20, ERC20Burnable, ERC20Pausable, Ownable2Step {
 
     /**
      * @dev Constructor that gives msg.sender all of existing tokens.
@@ -21,7 +21,7 @@ contract Wrt is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
      */
     constructor(string memory name, string memory symbol, uint256 initialSupply)
     ERC20(name, symbol)
-    Ownable(msg.sender)
+    Ownable2Step(msg.sender) // Using Ownable2Step
     {
         _mint(msg.sender, initialSupply);
     }
@@ -54,5 +54,12 @@ contract Wrt is ERC20, ERC20Burnable, ERC20Pausable, Ownable {
      */
     function unpause() public onlyOwner {
         _unpause();
+    }
+
+    /**
+     * @dev Overriding renounceOwnership to prevent accidental ownership renouncement.
+     */
+    function renounceOwnership() public override onlyOwner {
+        //revert("Ownership renouncement is disabled.");
     }
 }
