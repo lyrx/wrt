@@ -1,66 +1,30 @@
-## Foundry
+![](wrt.png)
+# Wrt Token Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Introduction
+The Wrt contract is an Ethereum blockchain-based ERC20 token. It extends the basic ERC20 standard with additional features like burnable and pausable capabilities. This contract uses OpenZeppelin's secure and community-vetted code as a foundation.
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+## Features
+- **ERC20 Standard**: Implements all standard ERC20 functionalities.
+- **Burnable**: Tokens can be irreversibly burned (destroyed), reducing the total supply.
+- **Pausable**: Token transfers can be paused and unpaused by the contract owner, adding an extra layer of control in case of emergencies or maintenance.
 
 ## Usage
+### Constructor
+- `constructor(string memory name, string memory symbol, uint256 initialSupply)`
+    - `name`: Name of the token.
+    - `symbol`: Symbol of the token.
+    - `initialSupply`: Initial supply of tokens to be minted and allocated to the contract deployer.
 
-### Build
+### Functions
+- `mint(address to, uint256 amount)`: Allows the owner to mint new tokens.
+- `pause()`: Allows the owner to pause all token transfers.
+- `unpause()`: Allows the owner to unpause all token transfers.
 
-```shell
-$ forge build
-```
+## Development and Testing
+This contract is developed and tested using Solidity 0.8.21 with Foundry. Foundry is a fast, portable, and modular
+toolkit for Ethereum application development. It's recommended to use Foundry for testing and interacting with the contract.
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Security
+This contract relies on OpenZeppelin's secure implementations. However, it is always recommended to conduct thorough security 
+audits before deploying any smart contract in a production environment.
