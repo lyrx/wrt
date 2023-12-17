@@ -1,13 +1,19 @@
 ![](wrt.png)
-# Wrt Token Contract
+# WRT: The World Teamup Token
 
 ## Introduction
-The Wrt contract is an Ethereum blockchain-based ERC20 token. It extends the basic ERC20 standard with additional features like burnable and pausable capabilities. This contract uses OpenZeppelin's secure and community-vetted code as a foundation.
+WRT  is an Ethereum blockchain-based ERC20 token. Its indended purpose is
+to serve as a Medium of exchange for goods and services. This stands in stark
+contrast to the existing ER20 tokens that are traded on exchanges.
+
+It extends the basic ERC20 standard with additional features like burnable and pausable capabilities.
+This contract uses OpenZeppelin's secure and community-vetted code as a foundation.
 
 ## Features
 - **ERC20 Standard**: Implements all standard ERC20 functionalities.
 - **Burnable**: Tokens can be irreversibly burned (destroyed), reducing the total supply.
-- **Pausable**: Token transfers can be paused and unpaused by the contract owner, adding an extra layer of control in case of emergencies or maintenance.
+- **Pausable**: Token transfers can be paused and unpaused by the contract owner, adding an extra
+  layer of control in case of emergencies or maintenance.
 
 ## Usage
 ### Constructor
