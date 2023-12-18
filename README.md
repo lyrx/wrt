@@ -6,7 +6,7 @@ WRT  is an Ethereum blockchain-based ERC20 token. Its indended purpose is
 to serve as a Medium of exchange for goods and services. This stands in stark
 contrast to the existing ER20 tokens that are traded on exchanges.
 
-It extends the basic ERC20 standard with additional features like burnable and pausable capabilities.
+It extends the basic ERC20 standard with additional features like burnable  capabilities.
 This contract uses OpenZeppelin's secure and community-vetted code as a foundation.
 
 ## Features
