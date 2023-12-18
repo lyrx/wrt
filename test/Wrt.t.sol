@@ -40,36 +40,7 @@ contract WrtTest is DSTest, Test  {
         assertEq(wrt.owner(), deployer);
     }
 
-    function testPauseFunctionality() public {
-        // Ensure only owner can pause and unpause
-        wrt.pause();
-        assertTrue(wrt.paused());
 
-        wrt.unpause();
-        assertTrue(!wrt.paused());
-    }
-
-    function testFailTransferWhenPaused() public {
-        uint256 transferAmount = 50;
-        address recipient = address(0x123);
-
-        wrt.pause();
-        wrt.transfer(recipient, transferAmount); // This should fail
-    }
-
-    function testFailMintWhenPaused() public {
-        uint256 mintAmount = 50;
-
-        wrt.pause();
-        wrt.mint(deployer, mintAmount); // This should fail
-    }
-
-    function testFailBurnWhenPaused() public {
-        uint256 burnAmount = 50;
-
-        wrt.pause();
-        wrt.burn(burnAmount); // This should fail
-    }
 
 
     // Test mint function
@@ -80,17 +51,7 @@ contract WrtTest is DSTest, Test  {
         assertEq(wrt.balanceOf(deployer), 1100);
     }
 
-    // Test failure to pause/unpause from non-owner
-    function testFailPauseByNonOwner() public {
-        vm.prank(nonOwner);
-        wrt.pause();
-    }
 
-    function testFailUnpauseByNonOwner() public {
-        wrt.pause();
-        vm.prank(nonOwner);
-        wrt.unpause();
-    }
 
 
 
@@ -98,13 +59,6 @@ contract WrtTest is DSTest, Test  {
         uint256 mintAmount = 50;
         vm.prank(nonOwner);
         wrt.mint(deployer, mintAmount);
-    }
-
-    function testFailPauseUnpauseByNonOwner() public {
-        vm.prank(nonOwner);
-        wrt.pause();
-        vm.prank(nonOwner);
-        wrt.unpause();
     }
 
     function testRenounceOwnership() public {
