@@ -5,7 +5,7 @@ pragma solidity 0.8.21;
 import "@openzeppelin-contracts@5.0.1/token/ERC20/ERC20.sol";
 import "@openzeppelin-contracts@5.0.1/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin-contracts@5.0.1/token/ERC20/extensions/ERC20Pausable.sol";
-import "./Ownable2Step.sol"; // Custom Ownable2Step contract
+import "@openzeppelin-contracts@5.0.1/access/Ownable2Step.sol";
 
 /**
  * @title Wrt Token Contract
@@ -19,9 +19,9 @@ contract Wrt is ERC20, ERC20Burnable, ERC20Pausable, Ownable2Step {
      * @param symbol Symbol of the token.
      * @param initialSupply Initial supply of tokens to be minted.
      */
-    constructor(string memory name, string memory symbol, uint256 initialSupply)
+    constructor(string memory name, string memory symbol, uint256 initialSupply,address initialOwner)
     ERC20(name, symbol)
-    Ownable2Step(msg.sender) // Using Ownable2Step
+    Ownable(initialOwner)
     {
         _mint(msg.sender, initialSupply);
     }
