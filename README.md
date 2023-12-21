@@ -22,6 +22,7 @@ This contract uses OpenZeppelin's secure and community-vetted code as a foundati
     - `initialSupply`: Initial supply of tokens to be minted and allocated to the contract deployer.
     - `initialOwner`: Owner of the token
 
+
 ### Functions
 - `mint(address to, uint256 amount)`: Allows the owner to mint new tokens.
 
@@ -33,3 +34,63 @@ toolkit for Ethereum application development. It's recommended to use Foundry fo
 ## Security
 This contract relies on OpenZeppelin's secure implementations. However, it is always recommended to conduct thorough security 
 audits before deploying any smart contract in a production environment.
+
+
+## Deployments using Foundry
+
+"Canonical" environment variables you need to set:
+
+```
+#Wallet
+export PUBLIC_KEY=
+export PRIVATE_KEY=
+
+#Infura endpoints
+export INFURA_API_KEY=
+export SEPOLIA_TESTNET="https://sepolia.infura.io/v3/${INFURA_API_KEY}"
+export GOERLI_TESTNET="https://goerli.infura.io/v3/${INFURA_API_KEY}"
+export ETHEREUM_MAINNET="https://mainnet.infura.io/v3/${INFURA_API_KEY}"
+export POLYGON_MAINNET="https://polygon-mainnet.infura.io/v3/${INFURA_API_KEY}"
+export POLYGON_MUMBAI="https://polygon-mumbai.infura.io/v3/${INFURA_API_KEY}"
+export ARBITRUM_GOERLI="https://arbitrum-goerli.infura.io/v3/${INFURA_API_KEY}"
+export ARBITRUM_SEPOLIA="https://arbitrum-sepolia.infura.io/v3/${INFURA_API_KEY}"
+export ARBITRUM="https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}"
+
+#Anvil (Use Anvil console output on startup to fill blanks)
+export ANVIL_LOCAL="http://localhost:8545"
+export ANVIL_PRIVATE_KEY=
+export ANVIL_PUBLIC_KEY=
+
+#Initial supply  (That's your decision)
+# The token has 18 decimals (`token decimal`), so  you must
+# multiply the number of tokens you want to have as initial supply by `10^18`
+export INITIALSUPPLY=  
+```
+
+
+### Deployments using Anvil and Foundry
+
+Start up anvil: `anvil`
+
+#### Anvil and MetaMask
+
+MetaMask checks the `chain id` before transactions. You see the network id when starting
+up Anvil. Make sure MetaMask uses the same network id and port number!! (It can be configured,
+when you set up the network
+manually). If this is not correct, you will get JSON-Rpc-Errors, but no error messages that help
+you understand the problem.
+
+You must give gas to the deploying address:
+
+```shell
+cast send --rpc-url $ANVIL_LOCAL --private-key $ANVIL_PRIVATE_KEY  $PUBLIC_KEY --value 1000000000000000000
+```
+You deploy:
+
+```shell
+
+# Deploy the contract
+forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $ANVIL_LOCAL   --constructor-args "World Teamup Token" "WRT" $INITIALSUPPLY  $PUBLIC_KEY 
+
+```
+
