@@ -89,8 +89,17 @@ You deploy:
 
 ```shell
 
-# Deploy the contract
+# Anvil: Deploy the contract
 forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $ANVIL_LOCAL   --constructor-args "World Teamup Token" "WRT" $INITIALSUPPLY  $PUBLIC_KEY 
+
+# Polygon Mumbai: Deploy the contract
+forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $POLYGON_MUMBAI   --constructor-args "World Teamup Token" "WRT" $INITIALSUPPLY  $PUBLIC_KEY 
+
+Deployer: 0x977583aA8aaFEE37f60A1eee8eB273a1dF05F57c
+Deployed to: 0xc36b1A1f7f0447c5860B902DEB4eB8c9F1f7A4b4
+Transaction hash: 0xf2cfaa9e12b6dfe57cda9fb77ad9ffc56650b6169049b0098f5bbdba70cc93ee
+
+
 
 ```
 
