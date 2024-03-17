@@ -96,8 +96,11 @@ forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $ANVIL_LOCAL 
 forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $POLYGON_MUMBAI   --constructor-args "World Teamup Token" "WRT" $INITIALSUPPLY  $PUBLIC_KEY 
 
 Deployer: 0x977583aA8aaFEE37f60A1eee8eB273a1dF05F57c
-Deployed to: 0xc36b1A1f7f0447c5860B902DEB4eB8c9F1f7A4b4
-Transaction hash: 0xf2cfaa9e12b6dfe57cda9fb77ad9ffc56650b6169049b0098f5bbdba70cc93ee
+Deployed to: 0x6d2FA77A5a498738F47c9cBF575d5B51a84020B7
+Transaction hash: 0xe76f465c68df6f10e0281b97d1c88e1262096f41d84125c367a9be30d1bc55f9
+
+
+
 
 # Polygon Mainnet: Deploy the contract
 cast balance $PUBLIC_KEY --rpc-url $POLYGON_MAINNET
