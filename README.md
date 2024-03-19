@@ -113,6 +113,15 @@ Deployed to: 0xcfB5f338096c56353FEfD44A146461C21b268CcC
 Transaction hash: 0x1b20888aea0046ee71154f629fc1f36fa85d82566a55ab58dfb8392177479055
 
 
+# BASE: Deploy the contract
+cast balance $PUBLIC_KEY --rpc-url $BASE
+
+forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $BASE   --constructor-args "World Teamup Token" "WRT" $INITIALSUPPLY  $PUBLIC_KEY 
+
+Deployer: 0x977583aA8aaFEE37f60A1eee8eB273a1dF05F57c
+Deployed to: 0xE12b9421D8b771BBfA67779e9d89Ee18054735aB
+Transaction hash: 0x8887e0402817f94430b6525ed56a9e9638b989f168520358d5b130f4448931e4
+
 
 
 ```
