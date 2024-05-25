@@ -124,9 +124,14 @@ Transaction hash: 0x8887e0402817f94430b6525ed56a9e9638b989f168520358d5b130f44489
 
 
 # Polygon AMOY 
-cast balance $PUBLIC_KEY --rpc-url POLYGON_AMOY
+cast balance $PUBLIC_KEY --rpc-url $POLYGON_AMOY
 
 forge create src/Wrt.sol:Wrt --private-key $PRIVATE_KEY  --rpc-url $POLYGON_AMOY   --constructor-args "World Teamup Token" "WRT" $INITIALSUPPLY  $PUBLIC_KEY 
+
+Deployer: 0x977583aA8aaFEE37f60A1eee8eB273a1dF05F57c
+Deployed to: 0xc36b1A1f7f0447c5860B902DEB4eB8c9F1f7A4b4
+Transaction hash: 0x622b11c7bef2ade5d31ecb8ab682efbc33fe32a23590c1d13fb2e380188a1ac9
+
 
 
 ```
